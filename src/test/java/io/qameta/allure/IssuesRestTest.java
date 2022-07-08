@@ -37,6 +37,4 @@ public class IssuesRestTest {
         steps.createIssueWithTitle(OWNER, REPO, title);
         steps.closeIssueWithTitle(OWNER, REPO, title);
     }
-
-
 }
