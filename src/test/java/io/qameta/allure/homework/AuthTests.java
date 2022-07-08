@@ -20,7 +20,7 @@ public class AuthTests {
     @Story("Авторизация через сторонние системы")
     @Owner("allure8")
     @Feature("Авторизация")
-    public void testGoogleAuth() {
+    public void testFacebookAuth() {
         step("Открываем главную страницу");
         step("Нажимаем кнопку Авторизация");
         step("Выбираем способ авторизации через Facebook");
@@ -64,4 +64,29 @@ public class AuthTests {
         });
     }
 
+    @Test
+    @AllureId("10957")
+    @DisplayName("Авторизация через Google")
+    @Tags({@Tag("blocker"), @Tag("web")})
+    @Story("Авторизация через сторонние системы")
+    @Owner("allure8")
+    @Feature("Авторизация")
+    public void testGoogleAuth() {
+        step("Открываем главную страницу");
+        step("Нажимаем кнопку Авторизация");
+        step("Выбираем способ авторизации через Google");
+        step("Авторизуемся как пользователь user_name-123", () -> {
+            step("Вводим логин user_login-123");
+            step("Вводим пароль user_password-123");
+            step("Нажимаем кнопку Войти");
+        });
+        step("Должны оказаться на главной странице сайта");
+        step("Профиль пользователя должен быть заполнен из Google", () -> {
+            step("Имя user_name-123");
+            step("Login user_login-123");
+            step("Аватарка");
+            step("Разлогиниваемся");
+            step("");
+        });
+    }
 }
